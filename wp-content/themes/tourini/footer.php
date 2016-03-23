@@ -15,10 +15,24 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'tourini' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'tourini' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
 			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'tourini' ), 'tourini', '<a href="https://github.com/0820/" rel="designer">0820</a>' ); ?>
 		</div><!-- .site-info -->
+
+		<div class="static-social">
+			<?php if ( has_nav_menu( 'social' ) ) : ?>
+				<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'tourini' ); ?>">
+					<?php 
+						wp_nav_menu( array( 
+							'theme_location' => 'social', 
+							'menu_class' 	 => 'social_links_menu',
+							'depth'			 => 1,
+							'link_before'	 => '<span class="screen-reader-text">',
+							'link_after'	 => '</span>', 
+						) ); 
+					?>
+				</nav><!-- .social-navigation -->
+			<?php endif; ?>
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

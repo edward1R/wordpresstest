@@ -45,6 +45,7 @@ function tourini_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'tourini' ),
+		'social' => esc_html__( 'Social', 'tourini' ),
 	) );
 
 	/*
@@ -115,6 +116,9 @@ add_action( 'widgets_init', 'tourini_widgets_init' );
  */
 function tourini_scripts() {
 	wp_enqueue_style( 'tourini-style', get_stylesheet_uri() );
+
+	// Add Genericons, used in the main stylesheet.
+	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
 
 	wp_enqueue_script( 'tourini-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
