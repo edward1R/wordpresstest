@@ -99,9 +99,21 @@ add_action( 'after_setup_theme', 'tourini_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function tourini_widgets_init() {
+	// Siderbar on the right side
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'tourini' ),
 		'id'            => 'sidebar-1',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	// Sidebar in the footer
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widget', 'tourini' ),
+		'id'            => 'sidebar-2',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
@@ -119,6 +131,9 @@ function tourini_scripts() {
 
 	// Add Genericons, used in the main stylesheet.
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+
+	// Add local fonts downloaded from http://google-webfonts-helper.herokuapp.com/fonts
+	wp_enqueue_style( 'tourini_local_fonts', get_template_directory_uri() . '/fonts/custom-fonts.css' );
 
 	wp_enqueue_script( 'tourini-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
