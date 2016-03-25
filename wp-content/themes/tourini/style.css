@@ -292,6 +292,10 @@ optgroup {
 /**
  * 3.0 - Typography
  */
+* {
+	margin: 0;
+	padding: 0;
+}
 
 body,
 button,
@@ -457,8 +461,9 @@ html {
 }
 
 body {
-	background: #1a1a1a;
+	background: #ffffff;
 	/* Fallback for when there is no custom background color defined. */
+	min-width: 320px;
 }
 
 hr {
@@ -470,12 +475,12 @@ hr {
 
 ul,
 ol {
-	margin: 0 0 1.75em 1.25em;
+	margin: 0;
 	padding: 0;
 }
 
 ul {
-	list-style: disc;
+	list-style: none;
 }
 
 ol {
@@ -548,30 +553,6 @@ th,
 td {
 	padding: 0.4375em;
 }
-
-/* Placeholder text color -- selectors need to be separate to work. */
-::-webkit-input-placeholder {
-	color: #686868;
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
-}
-
-:-moz-placeholder {
-	color: #686868;
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
-}
-
-::-moz-placeholder {
-	color: #686868;
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
-	opacity: 1;
-	/* Since FF19 lowers the opacity of the placeholder by default */
-}
-
-:-ms-input-placeholder {
-	color: #686868;
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
-}
-
 
 /**
  * 5.0 - Forms
@@ -792,7 +773,10 @@ a:active {
 }
 
 .main-navigation {
-	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	background-color: #1aa469;
+	width: 100%;
+	height: 50px;
+	text-align: center;
 }
 
 .site-footer .main-navigation {
@@ -809,20 +793,37 @@ a:active {
 
 .main-navigation ul {
 	list-style: none;
-	margin: 0;
+	display: inline-block !important;
+	line-height: 1.125em;
 }
 
 .main-navigation li {
-	border-top: 1px solid #d1d1d1;
 	position: relative;
+	display: inline-block !important;
 }
 
 .main-navigation a {
-	color: #1a1a1a;
-	display: block;
-	line-height: 1.3125;
-	outline-offset: -1px;
-	padding: 0.84375em 0;
+	display: inline-block;
+	padding: 15px 20px;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+.menu-items {
+	display: inline-block !important;
+	list-style: none;
+	position: relative;
+	z-index: 99;
+}
+
+.menu-items > .menu-item > a {
+	color: #fff;
+}
+
+.menu-items > .menu-item > a:hover {
+	color: #8dd2b4;
+	background: none;
 }
 
 .main-navigation a:hover,
@@ -837,7 +838,6 @@ a:active {
 
 .main-navigation ul ul {
 	display: none;
-	margin-left: 0.875em;
 }
 
 .no-js .main-navigation ul ul {
@@ -1543,6 +1543,7 @@ blockquote:after,
 
 .site {
 	background-color: #fff;
+	max-width: 1366px;
 }
 
 .site-inner {
@@ -1574,7 +1575,8 @@ blockquote:after,
  */
 
 .site-header {
-	padding: 2.625em 7.6923%;
+	padding: 1.625em 7.6923%;
+	z-index: 100;
 }
 
 .site-header-main {
@@ -1589,8 +1591,24 @@ blockquote:after,
 	flex-wrap: wrap;
 }
 
+.static-header-logo {
+	top: 0;
+}
+
+
+.site-branding h1,
+.site-branding h2 {
+	font-size: 1em;
+	line-height: 3em;
+	letter-spacing: 5px;
+}
+
 .site-branding {
-	margin: 0.875em auto 0.875em 0;
+	text-align: center;
+	padding: 0 10px;
+	border: 1px solid;
+	min-height: 50px;
+	background: #fff;
 }
 
 .site-title {
@@ -2814,12 +2832,10 @@ p > video {
 	}
 
 	.site-header {
-		padding: 3.9375em 7.6923%;
+		padding: 1.9375em 7.6923%;
 	}
 
 	.site-branding {
-		margin-top: 1.3125em;
-		margin-bottom: 1.3125em;
 	}
 
 	.site-title {
@@ -3025,7 +3041,6 @@ p > video {
 	}
 
 	.main-navigation {
-		margin: 0 -0.875em;
 	}
 
 	.main-navigation .primary-menu,
@@ -3437,10 +3452,9 @@ p > video {
 	}
 
 	.site-header {
-		padding: 5.25em 4.5455%;
+		padding: 3.25em 4.5455%;
 	}
 
-	.site-branding,
 	.site-header-menu,
 	.header-image {
 		margin-top: 1.75em;
@@ -3653,6 +3667,11 @@ p > video {
  */
 
 @media screen and (min-width: 75em) {
+	.site {
+		max-width: 75em;
+		margin: 0 auto;
+	}
+	
 	body:not(.search-results) .entry-summary {
 		font-size: 23px;
 		font-size: 1.4375rem;

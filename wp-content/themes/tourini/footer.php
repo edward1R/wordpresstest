@@ -17,8 +17,8 @@
 		<div id="static-area-footer-top" class="static-area footer-top"></div>
 		<div id="static-area-footer-middle" class="static-area footer-middle">
 			<div class="footer-logo image-logo">
-				<a href="http://127.0.0.1/wordpresstest/" rel="home">
-					<img src="http://ld-wp.template-help.com/wordpress_58593/wp-content/uploads/2016/03/logo_2_26459.png" alt="LOGO" />
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<img src="http://ld-wp.template-help.com/wordpress_58593/wp-content/uploads/2016/03/logo_2_26459.png" alt="<?php bloginfo( 'name' ); ?>" />
 				</a>
 			</div>
 			<aside id="footer_widget" class="widget-area" role="complementary">
